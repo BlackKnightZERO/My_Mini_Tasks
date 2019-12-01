@@ -1,0 +1,94 @@
+html{
+    scroll-behavior: smooth;
+    /* background: black;
+    filter: invert(1) hue-rotate(180deg); */ /* for dark mode */
+}
+.fadebtn>button{
+    padding: 2rem 5rem;
+    font-size: 2rem;
+    background: cornflowerblue;
+    border: none;
+    cursor: pointer;
+    animation: fade 2s ease forwards;
+}
+@keyframes fade{
+    from{
+        opacity: 1;
+        pointer-events: all;
+    }
+    to{
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+.block50{
+    background: cornflowerblue;
+    width: 50%;
+}
+.block50>h4>p{
+    text-align: center;
+    margin: 2rem;
+    padding: 2rem;
+    height: 5rem;
+    border:1px solid crimson;
+}
+
+.centerDiv{
+    background: lightblue;
+    width: 80%;
+    height: 80vh;
+    text-align: center;
+    /* margin: 0 0 0 auto; */
+    margin: auto;
+    line-height: 80vh;
+}
+.heightLightTextColor>p::selection{
+    background: rgb(143, 40, 168);
+    color: white;
+}
+.fistletterBig>p::first-letter{
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    height: 100vh;
+}
+#portfolio{
+    margin-top: 30rem;
+}
+.darkMode{
+    /* background: black;
+    filter: invert(1) hue-rotate(180deg); */
+}
+.darkMode>a{
+    font-size: 2rem;
+    color: rgb(74, 128, 94);
+}
+
+.pixel_vs_rem>h4{
+    font-size: 2rem;
+}
+.pixel_vs_rem>p{
+    font-size: 1.2rem;
+}
+@media screen and (max-width:700px){
+    html{
+        font-size: 75%;
+    }
+}
+
+.double_box_shadow{
+    background: seagreen;
+    height: 50vh;
+}
+.inner_elements{
+    border: 1px solid red;
+    box-shadow: 0px 10px 20px rgb(0, 0, 0);
+    /* , 0px 5px 40px rgb(0, 0, 0); */
+}
+.gradient>h4{
+    font-size: 3rem;
+    background: -webkit-linear-gradient(right, rgba(91, 18, 173, 0), rgb(233, 27, 147));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline;
+}
