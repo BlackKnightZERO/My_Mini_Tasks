@@ -1,2 +1,2 @@
 # My_Mini_Tasks
-useful CSS, JS &amp; PHP findings !
+useful CSS, JS &amp; PHP learnings !
