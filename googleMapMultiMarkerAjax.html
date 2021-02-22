@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Map Multi Marker with ajax call</title>
+</head>
+<body>
+    
+<div id="map" style="width: 1100px; height: 500px;"></div>
+
+<script type="text/javascript">
+    function initialize() {
+        // var locations = [
+        //   ['Place1', 23.13848534257762, 151.274856],
+        //   ['Place2', 23.012143915952237,89.65530606147945],
+        //
+        // ];
+        var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 7,
+        center: new google.maps.LatLng(24.03857532644017,90.15725239950825),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker, i;
+        $.ajax({
+            url:'/api_url_get_locations',
+            type:'get',
+            data:{'_token': $('input[name=_token]').val()},
+            success:function(data){
+                console.log(data);
+
+                for (i = 0; i < data.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(data[i]['gps_latitude'], data[i]['gps_longitude']),
+                    map: map
+                });
+
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    infowindow.setContent(data[i]['gps_location_name']);
+                    infowindow.open(map, marker);
+                }
+
+                })(marker, i));
+
+                }
+            }
+        });
+      }
+
+    function loadScript() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCGnLtJLkP59XaXzhiByAZeKZf2mk4SC_o&' +
+        'callback=initialize';
+        document.body.appendChild(script);
+    }
+
+    window.onload = loadScript;
+
+    </script>
+</body>
+</html>
